@@ -33,6 +33,7 @@ devtools::install_github("hadley/emo")
 4. Stocker de gros volumes
 
 5. Prétraitement des données
+
 </small>
 
 
@@ -124,5 +125,5 @@ Démo 1: dans l'index existant `sirus_2020` via Kibana
 
 Démo 2: lancer un service ElasticSearch, indexer des données (Trainings)
 
-
+# `r emo::ji('sparkles')` Merci de votre attention `r emo::ji('blush')`
 
