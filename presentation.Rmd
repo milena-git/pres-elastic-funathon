@@ -22,14 +22,17 @@ devtools::install_github("hadley/emo")
 
 # <large> <img src="img/elastic.png" style="background:none; border:none; box-shadow:none;" width="70" height="70"> ElasticSearch: quésaco `r emo::ji('question')` </large>
 
-<small> Un logiciel "moteur de recherche" dans un ensemble de documents particulièrement performant sur les données textuelles, ou pour toute requête structurée comprenant des données numériques, textuelles, géospatiales.  
+<small> Un logiciel "moteur de recherche" dans un ensemble de documents **particulièrement performant** sur les données textuelles, ou pour toute requête structurée comprenant des données numériques, textuelles, géospatiales.  
 
 1. Résultats par pertinence
 
 2. Flexibilité dans l'analyse des données et dans la recherche
 
-3. Rapidité d'exécution des recherches
+3. Rapidité d'exécution des recherches: répartition, parallélisation
 
+4. Stocker de gros volumes
+
+5. Prétraitement des données
 </small>
 
 
@@ -80,7 +83,9 @@ devtools::install_github("hadley/emo")
 
 # Vocabulaire 
 
-**Document**: Unité de données  
+
+<small>
+**Document**: Unité de données
 
 **Index**: Collection de documents   
 
@@ -89,9 +94,11 @@ devtools::install_github("hadley/emo")
 **Analyzer** d'un champ textuel: **tokenizer** (découpage en unité _token_ d'une chaîne de caractère) et **filter** (filtre des tokens retenus). 
 
 **Mapping**: structure des champs (type et analyzer)  
+</small>
 
-Mapping lors de la création de l'index.
-Pour les documents indexés, analyse lors de l'indexation.  
+Mapping lors de la création de l'index. Pour les documents indexés, analyse lors de l'indexation.  
+
+Indexation `r emo::ji('sleeping')`  mais requête  `r emo::ji('astonished')` 
 
 # S'interfacer avec ElasticSearch
 
@@ -108,5 +115,14 @@ _Kibana:_ outil de visualisation, utile aussi pour prototyper les recherches (d�
 
 Les mots clés utiles pour parcourir la documentation sont "Query DSL", "Text analysis", "Search data". 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
+
+# Quelques exemples de requêtes
+
+Démo 1: dans l'index existant `sirus_2020` via Kibana
+
+# Indexer ses propres données 
+
+Démo 2: lancer un service ElasticSearch, indexer des données (Trainings)
+
 
 
