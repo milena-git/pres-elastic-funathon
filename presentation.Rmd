@@ -1,0 +1,112 @@
+---
+title: 'Elastic Search <img src="img/elastic.png" style="background:none; border:none; box-shadow:none;" width="70" height="70">'
+subtitle: "Initiation pour le Funathon 2022"
+author: Milena Suarez Castillo
+date: 21 Juin 2022
+output: 
+  revealjs::revealjs_presentation:
+    theme: simple
+    highlight: pygments
+    center: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+#install.packages('revealjs')
+devtools::install_github("hadley/emo")
+# Useful links: 
+##https://bookdown.org/yihui/rmarkdown/revealjs.html 
+## https://gist.github.com/rxaviers/7360908
+```
+
+
+# <large> <img src="img/elastic.png" style="background:none; border:none; box-shadow:none;" width="70" height="70"> ElasticSearch: quésaco `r emo::ji('question')` </large>
+
+<small> Un logiciel "moteur de recherche" dans un ensemble de documents particulièrement performant sur les données textuelles, ou pour toute requête structurée comprenant des données numériques, textuelles, géospatiales.  
+
+1. Résultats par pertinence
+
+2. Flexibilité dans l'analyse des données et dans la recherche
+
+3. Rapidité d'exécution des recherches
+
+</small>
+
+
+<div class="columns-1">
+<img src="img/matchid.png" style="background:none; border:none; box-shadow:none;" width="450" height="150">
+</div> 
+
+# <small> Des exemples de projet open-source où le service est basé sur ElasticSearch  </small>
+
+[Décès Match ID](https://deces.matchid.io/search) 
+
+[Annuaire des entreprises](https://annuaire-entreprises.data.gouv.fr/)
+
+# <large> Exemples de projet dans la sphère statistique publique  </large>
+
+`r emo::ji('arrow_right')`_Production:_ Moteur d’identification au RNIPP construit pour le CSNS 
+
+`r emo::ji('arrow_right')`_Expérimentation:_ Amélioration de l'identification de l'employeur dans le recensement 
+
+`r emo::ji('arrow_right')`_Etude:_ Enrichissement des données de caisse à partir d'information nutritionelles
+
+ `r emo::ji('point_right')` Identification, appariement flou
+
+# Trois grandes phases pour appréhender ElasticSearch [(Doc)](https://www.elastic.co/guide/index.html)
+
+`r emo::ji('arrow_right')` Mettre en place un serveur Elastic Search (Version, Configuration, Noeuds, Performance)  `r emo::ji('x')`
+
+`r emo::ji('arrow_right')` Indexer (ingérer, stocker) des documents (unités de données) dans un index (collection de documents) `r emo::ji('heavy_check_mark')`
+
+
+`r emo::ji('arrow_right')` Requêter parmi les documents `r emo::ji('heavy_check_mark')`
+
+
+# Expérimenter sur le Datalab
+
+
+`r emo::ji('arrow_right')` Mettre en place un serveur Elastic Search  `r emo::ji('heavy_check_mark')`
+
+`r emo::ji('arrow_right')` Ingérer ses propres données (ouvertes) `r emo::ji('question')`
+
+`r emo::ji('arrow_right')` Requêter ses données (ouvertes) `r emo::ji('question')`
+
+ `r emo::ji('point_right')` Expérimenter la technologie, se former 
+ 
+ 
+[Trainings de sspcloud.fr](https://www.sspcloud.fr): Analyse textuelle -> Appariemment flou avec Elastic Search
+
+
+# Vocabulaire 
+
+**Document**: Unité de données  
+
+**Index**: Collection de documents   
+
+**Champs (field)**: variables typées **type** (keyword, numeric, geo_point)  
+
+**Analyzer** d'un champ textuel: **tokenizer** (découpage en unité _token_ d'une chaîne de caractère) et **filter** (filtre des tokens retenus). 
+
+**Mapping**: structure des champs (type et analyzer)  
+
+Mapping lors de la création de l'index.
+Pour les documents indexés, analyse lors de l'indexation.  
+
+# S'interfacer avec ElasticSearch
+
+Elasticsearch:  `r emo::ji('computer')` serveur capable de traiter des requêtes JSON et de vous restituer les données sous le format JSON
+
+_Python:_ module `elastisearch`  
+
+_R:_ package `elastic`  
+
+_Kibana:_ outil de visualisation, utile aussi pour prototyper les recherches (démo) faisant parti de la suite Elastic  
+
+
+# Sélection des entrées de la documentation pour démarrer
+
+Les mots clés utiles pour parcourir la documentation sont "Query DSL", "Text analysis", "Search data". 
+https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
+
+
