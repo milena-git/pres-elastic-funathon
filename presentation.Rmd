@@ -41,13 +41,13 @@ devtools::install_github("hadley/emo")
 <img src="img/matchid.png" style="background:none; border:none; box-shadow:none;" width="450" height="150">
 </div> 
 
-# <small> Des exemples de projet open-source où le service est basé sur ElasticSearch  </small>
+# <small> Des exemples de projets open-source où le service est basé sur ElasticSearch  </small>
 
 [Décès Match ID](https://deces.matchid.io/search) 
 
 [Annuaire des entreprises](https://annuaire-entreprises.data.gouv.fr/)
 
-# <large> Exemples de projet dans la sphère statistique publique  </large>
+# <large> Exemples de projets dans la sphère statistique publique  </large>
 
 `r emo::ji('arrow_right')`_Production:_ Moteur d’identification au RNIPP construit pour le CSNS 
 
@@ -92,7 +92,7 @@ devtools::install_github("hadley/emo")
 
 **Champs (field)**: variables typées **type** (keyword, numeric, geo_point)  
 
-**Analyzer** d'un champ textuel: **tokenizer** (découpage en unité _token_ d'une chaîne de caractère) et **filter** (filtre des tokens retenus). 
+**Analyzer** d'un champ textuel: **tokenizer** (découpage en unités _token_ d'une chaîne de caractères) et **filter** (filtre des tokens retenus). 
 
 **Mapping**: structure des champs (type et analyzer)  
 </small>
@@ -117,13 +117,20 @@ _Kibana:_ outil de visualisation, utile aussi pour prototyper les recherches (d�
 Les mots clés utiles pour parcourir la documentation sont "Query DSL", "Text analysis", "Search data". 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
 
-# Quelques exemples de requêtes
+# Démo sur le datalab
 
-Démo 1: dans l'index existant `sirus_2020` via Kibana
+## Quelques exemples de requêtes
 
-# Indexer ses propres données 
+Démo 1: dans l'index existant `sirus_2020` via Kibana 
 
-Démo 2: lancer un service ElasticSearch, indexer des données (Trainings)
+## Indexer ses propres données 
 
-# `r emo::ji('sparkles')` Merci de votre attention `r emo::ji('blush')`
+Démo 2: lancer un service ElasticSearch, indexer des données (Trainings) via un Jupyter Notebook
+
+## Requêter via Rstudio
+
+Démo 3: dans l'index existant `sirus_2020`, via le support pour le sujet 4 du funathon
+
+
+# `r emo::ji('sparkles')` Merci de votre attention `r emo::ji('sparkles')`
 
