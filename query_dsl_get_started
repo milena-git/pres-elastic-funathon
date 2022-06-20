@@ -1,0 +1,235 @@
+# Des requêtes simples (leaf clause), utilisables seules: match, multi_match
+
+GET sirus_2020/_search
+{
+  "query": {
+    "match": {
+      "denom": "insee"
+    }
+  }
+}
+
+GET sirus_2020/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "insee",
+      "fields": ["denom","adr_et_l1"]
+    }
+  }
+}
+
+GET sirus_2020/_search
+{
+  "query":{
+    "fuzzy": {
+      "sir_adr_et_com_lib": {
+        "value": "nntes",
+        "fuzziness": 1
+      }
+    }
+  }
+}
+
+# Les requêtes composées (Compound query clauses): 
+# La requête phare: bool
+# pour combiner les requêtes simples les plus utiles: 
+# must, should, multi_match, term, filter, must_not
+
+GET sirus_2020/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "denom": "insee"
+          }
+        },
+        {
+          "match": {
+            "sir_adr_et_com_lib": "montrouge"
+          }
+        }
+      ]
+    }
+  }
+}
+
+# Le contexte de filtre et le contexte de query pour l'interpration d'une clause: importance pour le score
+
+GET sirus_2020/_search
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "match": {
+            "sir_adr_et_com_lib": "montrouge"
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+
+GET sirus_2020/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "sir_adr_et_com_lib": "montrouge"
+          }
+        }
+      ]
+    }
+  }
+}
+
+# Une requête composée avec un filtre
+GET sirus_2020/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "denom": "insee"
+          }
+        },
+        {
+          "match": {
+            "sir_adr_et_com_lib": "montrouge"
+          }
+        }
+      ],
+      "filter": [
+        {
+          "term": {
+            "adr_et_post": "92120"
+          }
+        }
+      ]
+    }
+  }
+}
+
+# Support pour les recherches géolocalisées
+GET sirus_2020/_search
+{
+  "query": {
+    "bool": {
+      "must":
+      { "match": { "denom":   "institut national de la statistique"}}
+      ,
+      "filter":
+        {"geo_distance": {
+          "distance": "10km",
+          "location": {
+            "lat": "48.8168",
+            "lon": "2.3099"
+          }
+        }
+      }
+    }
+  }
+}
+
+## Booster des champs positivement ou négativement
+GET sirus_2020/_search
+{
+  "query": {
+    "boosting": {
+      "positive": {
+        "term": {
+          "rs_denom": "statistique"
+        }
+      },
+      "negative": {
+        "term": {
+          "text": "institut"
+        }
+      },
+      "negative_boost": 0.5
+    }
+  }
+}
+
+# Ajouter des boosts à certain champ
+GET sirus_2020/_search
+{
+  "query": {
+    "bool": {
+      "should":[
+      { "term": { "denom":   "institut"}},
+      { "term": { "denom": { 
+        "value": "statistique", 
+        "boost": 20 }}}
+      ],
+     "minimum_should_match": 1,
+      "filter":
+        {"geo_distance": {
+          "distance": "10km",
+          "location": {
+            "lat": "48.8168",
+            "lon": "2.3099"
+          }
+        }
+      }
+    }
+  }
+}
+
+## ----------Les analyzers: l'exemple des n-grammes---------------- ## 
+GET sirus_2020/_mapping
+
+
+##  -- Avec une erreur 
+GET sirus_2020/_search
+{
+  "query": {
+    "bool": {
+      "should":[
+      { "match": { "denom":   "institut"}},
+      { "match": { "denom": "statitique"}}
+      ],
+     "minimum_should_match": 2,
+      "filter":
+        {"geo_distance": {
+          "distance": "10km",
+          "location": {
+            "lat": "48.8168",
+            "lon": "2.3099"
+          }
+        }
+      }
+    }
+  }
+}
+# Avec une erreur mais une analyse en n-grammes
+GET sirus_2020/_search
+{
+  "query": {
+    "bool": {
+      "should":[
+      { "match": { "denom":   "institut"}},
+      { "match": { "denom.ngr": "statitique"}}
+      ],
+     "minimum_should_match": 2,
+      "filter":
+        {"geo_distance": {
+          "distance": "10km",
+          "location": {
+            "lat": "48.8168",
+            "lon": "2.3099"
+          }
+        }
+      }
+    }
+  }
+}
+
