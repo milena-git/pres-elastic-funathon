@@ -125,11 +125,20 @@ Démo 1: dans l'index existant `sirus_2020` via Kibana
 
 ## Indexer ses propres données 
 
-Démo 2: lancer un service ElasticSearch, indexer des données (Trainings) via un Jupyter Notebook
+Démo 2: lancer un service ElasticSearch, indexer des données (Trainings) via un Jupyter Notebook. 
 
-## Requêter via Rstudio
+Rmq: Kibana est dès lors accessible.
 
-Démo 3: dans l'index existant `sirus_2020`, via le support pour le sujet 4 du funathon
+
+## Indexer ses propres données via Rstudio 
+
+Démo 3: créer l'index `tweets-test`, via le support pour le sujet 2 du funathon
+
+## Requêter des données via Rstudio
+
+Démo 4: dans l'index existant `sirus_2020`, via le support pour le sujet 4 du funathon
+
+
 
 
 # `r emo::ji('sparkles')` Merci de votre attention `r emo::ji('sparkles')`
